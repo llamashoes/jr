@@ -46,8 +46,19 @@
         </section>
 
         <section id="guestbook" class="guestbook">
-          <div class="new-badge">NEW!</div><h2>✎ SIGN OUR GUESTBOOK! ✎</h2><p>Let us know you stopped by our little corner of the World Wide Web.</p>
-          <a class="bevel-button" href="mailto:hello@example.com?subject=Wedding%20Guestbook">SIGN GUESTBOOK</a><a class="text-link" href="mailto:hello@example.com?subject=Wedding%20RSVP">or e-mail us your RSVP!</a>
+          <div class="new-badge">NEW!</div><h2>✎ SIGN OUR GUESTBOOK! ✎</h2><p>Leave the happy couple a note! Messages appear here after approval.</p>
+          <form id="guestbook-form" class="guestbook-form" novalidate>
+            <label for="guestbook-name">YOUR NAME</label>
+            <input id="guestbook-name" name="name" type="text" maxlength="60" autocomplete="name" required />
+            <label for="guestbook-message">YOUR MESSAGE</label>
+            <textarea id="guestbook-message" name="message" rows="4" maxlength="500" required></textarea>
+            <div class="honeypot" aria-hidden="true"><label for="guestbook-website">WEBSITE</label><input id="guestbook-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
+            <button class="bevel-button" type="submit">POST MESSAGE!</button>
+            <p id="guestbook-status" class="guestbook-status" aria-live="polite"></p>
+          </form>
+          <div class="approved-heading"><span>★</span> APPROVED MESSAGES <span>★</span><button id="guestbook-reload" class="mini-button" type="button">RELOAD</button></div>
+          <div id="guestbook-messages" class="guestbook-messages" aria-live="polite"><p class="loading-message">Loading guestbook messages...</p></div>
+          <a class="text-link" href="mailto:hello@example.com?subject=Wedding%20RSVP">or e-mail us your RSVP!</a>
         </section>
 
         <aside class="coming-soon"><span aria-hidden="true">🚧</span><div><strong>PAGE UNDER CONSTRUCTION</strong><br />Registry &amp; travel info coming soon...</div><span aria-hidden="true">🚧</span></aside>
@@ -55,5 +66,6 @@
         <footer><p>You are visitor number:</p><div class="counter" aria-label="Visitor number 0001999">0 0 0 1 9 9 9</div><p class="updated">Last updated: 08/10/2026 at 11:59 PM</p><p class="tiny">Made with ♥, HTML, and a dream • © 2026 Jen &amp; Ryan<br />This page hosted by GeoHearts™</p></footer>
       </div>
     </main>
+    <script type="module" src="guestbook.js"></script>
   </body>
 </html>
