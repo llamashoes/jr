@@ -26,9 +26,8 @@ export default function Home() {
               <img src="/engagement-portrait.jpeg" alt="The happy couple smiling together outdoors" />
               <figcaption>♥ THE FUTURE NEWLYWEDS ♥</figcaption>
             </figure>
-            <p className="lead">After <strong>1,247 days</strong>, countless adventures, and approximately <strong>3,000 shared snacks</strong>...</p>
             <p className="big-news">WE&apos;RE MAKING IT OFFICIAL!</p>
-            <p>We can&apos;t imagine celebrating without our favorite people. Please save the date and join us for love, laughter, dancing, and a truly unreasonable amount of cake.</p>
+            <p>We can&apos;t imagine celebrating without our favorite people. Please save the date and join us for love, laughter, and dancing.</p>
           </div>
         </section>
         <div className="divider" aria-hidden="true">✦ ♥ ✦ ♥ ✦ ♥ ✦ ♥ ✦</div>
