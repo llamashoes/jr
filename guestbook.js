@@ -57,6 +57,29 @@ function displayEntries(entries) {
   });
 }
 
+function showLoading(isReload) {
+  messages.replaceChildren();
+  const loading = document.createElement("div");
+  loading.className = "loading-message";
+  const note = document.createElement("p");
+  note.textContent = isReload ? "CONTACTING THE GUESTBOOK SERVER... PLEASE WAIT!" : "Loading guestbook messages...";
+  loading.append(note);
+  if (isReload) {
+    const bar = document.createElement("div");
+    bar.className = "guestbook-loading-bar";
+    bar.setAttribute("role", "progressbar");
+    bar.setAttribute("aria-label", "Reloading guestbook messages");
+    bar.setAttribute("aria-valuetext", "Loading");
+    const fill = document.createElement("span");
+    bar.append(fill);
+    loading.append(bar);
+    const finePrint = document.createElement("small");
+    finePrint.textContent = "This may take a moment on our 56k connection...";
+    loading.append(finePrint);
+  }
+  messages.append(loading);
+}
+
 let db;
 let appCheckReady = Promise.resolve();
 if (!configured()) {
@@ -71,11 +94,11 @@ if (!configured()) {
     appCheckReady = getToken(appCheck, false);
   }
   db = getFirestore(app);
-  loadMessages();
+  loadMessages(false);
 }
 
-async function loadMessages() {
-  messages.innerHTML = '<p class="loading-message">Loading guestbook messages...</p>';
+async function loadMessages(isReload = false) {
+  showLoading(isReload);
   try {
     await appCheckReady;
     const approved = query(collection(db, collectionName), where("status", "==", "approved"), limit(50));
@@ -111,4 +134,4 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-reloadButton.addEventListener("click", loadMessages);
+reloadButton.addEventListener("click", () => loadMessages(true));
