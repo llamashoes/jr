@@ -20,3 +20,5 @@ The website is published with GitHub Pages at:
 No build tools or dependencies are required. Open `index.html` directly in a browser, or serve this folder with any simple local web server.
 
 Changes pushed to the `main` branch are published through GitHub Pages.
+
+See [TODO.md](TODO.md) for the planned Firebase-backed guestbook.
