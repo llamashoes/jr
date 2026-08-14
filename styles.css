@@ -50,7 +50,8 @@ h1 { margin: 0; font-size: clamp(35px,8vw,67px); line-height: .98; color: #ff57d
 .approved-heading { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 21px auto 10px; color: #ffff00; font: bold 14px "Courier New",monospace; }
 .mini-button { padding: 3px 6px; border: 2px outset #eee; background: #c0c0c0; color: #000; font: bold 11px Arial,sans-serif; cursor: pointer; }
 .guestbook-messages { width: min(570px,100%); margin: auto; text-align: left; }
-.loading-message { margin: 8px 0 !important; padding: 10px; background: #fff; border: 2px inset #ccc; color: #333 !important; text-align: center; font: 13px "Courier New",monospace; }
+.loading-message { margin: 8px 0 !important; padding: 10px; background: #fff; border: 2px inset #ccc; color: #333 !important; text-align: center; font: 13px "Courier New",monospace; }.loading-message p { margin: 0 !important; color: #333 !important; }.loading-message small { display: block; margin-top: 6px; color: #6a3e00; font-size: 10px; }
+.guestbook-loading-bar { height: 19px; margin: 9px auto 0; overflow: hidden; background: #000; border: 3px inset #aaa; box-shadow: 0 0 0 1px #000; }.guestbook-loading-bar span { display: block; width: 44%; height: 100%; background: repeating-linear-gradient(90deg,#00ff39 0 10px,#00b923 10px 14px); box-shadow: 0 0 8px #00ff39; animation: guestbook-load 1.35s steps(8) infinite; }
 .guestbook-entry { margin: 10px 0; padding: 11px 13px; background: #fff; color: #111; border: 3px outset #eee; box-shadow: 3px 3px 0 #180020; }
 .guestbook-entry h3 { margin: 0 0 6px; color: #9d006f; font: bold 15px "Courier New",monospace; }.guestbook-entry p { margin: 0 0 7px; color: #111; line-height: 1.4; white-space: pre-wrap; }.guestbook-entry time { color: #555; font: 11px "Courier New",monospace; }
 .coming-soon { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 10px; background: repeating-linear-gradient(135deg,#ffde00 0 13px,#000 13px 26px); border: 3px ridge #fff; color: #000; text-align: center; font: 13px "Courier New",monospace; }
@@ -59,6 +60,6 @@ footer { padding: 23px 0 5px; text-align: center; color: #fff; font: 13px "Couri
 .counter { display: inline-flex; padding: 4px; gap: 2px; color: #ff2929; background: #050505; border: 3px inset #999; font: bold 20px "Courier New",monospace; letter-spacing: 2px; text-shadow: 0 0 4px red; }
 .updated { color: #00ff66; } .tiny { color: #aaa; font-size: 10px; line-height: 1.6; }
 @keyframes marquee { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
-@keyframes twinkle { 50% { opacity: .25; transform: scale(.75); } } @keyframes pulse { 50% { transform: translateY(-50%) scale(1.18); } } @keyframes blink { 50% { visibility: hidden; } }
+@keyframes twinkle { 50% { opacity: .25; transform: scale(.75); } } @keyframes pulse { 50% { transform: translateY(-50%) scale(1.18); } } @keyframes blink { 50% { visibility: hidden; } } @keyframes guestbook-load { 0% { transform: translateX(-110%); } 100% { transform: translateX(260%); } }
 @media (max-width: 620px) { .hero { padding: 20px 13px; } .corner-gif { display: none; } .welcome { font-size: 10px; } .marquee-text,.date-stamp { font-size: 12px; } .details-grid { grid-template-columns: 1fr; } .web-nav span { margin: 0 3px; } .web-nav { font-size: 11px; } .window-body { padding: 15px 12px; } .divider { letter-spacing: 3px; } .coming-soon { gap: 6px; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .marquee-text,.sparkle,.corner-gif,.new-badge { animation: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .marquee-text,.sparkle,.corner-gif,.new-badge,.guestbook-loading-bar span { animation: none; } }
