@@ -32,8 +32,8 @@ export default function Home() {
         </section>
         <div className="divider" aria-hidden="true">✦ ♥ ✦ ♥ ✦ ♥ ✦ ♥ ✦</div>
         <section id="details" className="details-grid">
-          <article className="retro-window detail-card"><div className="title-bar pink"><span>📅</span> WHEN</div><div className="window-body"><p className="pixel-label">SAVE THE DATE</p><h2>SEPT. 28, 2026</h2><p>It&apos;s a Monday!</p><p>Celebration details to follow!</p></div></article>
-          <article className="retro-window detail-card"><div className="title-bar teal"><span>📍</span> WHERE</div><div className="window-body"><p className="pixel-label">LOCATION</p><h2>COMING SOON</h2><p>We&apos;re finalizing the details.</p><p>Check back for the full scoop!</p></div></article>
+          <article className="retro-window detail-card"><div className="title-bar pink"><span>📅</span> WHEN</div><div className="window-body"><p className="pixel-label">RECEPTION</p><h2>SEPT. 28, 2026</h2><p>It&apos;s a Monday!</p><p><strong>Reception starts at 7:30 PM</strong></p></div></article>
+          <article className="retro-window detail-card"><div className="title-bar teal"><span>📍</span> WHERE</div><div className="window-body"><p className="pixel-label">DRAPER, UTAH</p><h2>CACTUS &amp; TROPICALS</h2><address>12252 Draper Gate Drive<br />Draper, UT 84020</address><a className="map-link" href="https://www.google.com/maps/search/?api=1&query=12252+Draper+Gate+Drive+Draper+UT+84020" target="_blank" rel="noreferrer">VIEW MAP &gt;&gt;</a></div></article>
         </section>
         <section id="guestbook" className="guestbook">
           <div className="new-badge">NEW!</div><h2>✎ SIGN OUR GUESTBOOK! ✎</h2><p>Let us know you stopped by our little corner of the World Wide Web.</p>
