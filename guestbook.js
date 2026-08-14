@@ -75,7 +75,7 @@ if (!configured()) {
 }
 
 async function loadMessages() {
-  messages.innerHTML = '<p class="loading-message">Loading guestbook messages...</p>';
+  messages.innerHTML = '<p class="loading-message guestbook-loading-copy">★ RETRIEVING MESSAGES FROM CYBERSPACE... ★</p>';
   try {
     await appCheckReady;
     const approved = query(collection(db, collectionName), where("status", "==", "approved"), limit(50));
