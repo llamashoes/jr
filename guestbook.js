@@ -102,7 +102,11 @@ async function loadMessages(isReload = false) {
   try {
     await appCheckReady;
     const approved = query(collection(db, collectionName), where("status", "==", "approved"), limit(50));
-    displayEntries((await getDocs(approved)).docs);
+    const [snapshot] = await Promise.all([
+      getDocs(approved),
+      isReload ? new Promise((resolve) => window.setTimeout(resolve, 1200)) : Promise.resolve()
+    ]);
+    displayEntries(snapshot.docs);
   } catch {
     messages.innerHTML = '<p class="loading-message">Messages are temporarily unavailable. Please try again later.</p>';
   }
