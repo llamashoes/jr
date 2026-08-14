@@ -55,7 +55,7 @@ h1 { margin: 0; font-size: clamp(35px,8vw,67px); line-height: .98; color: #ff57d
 .guestbook-entry { margin: 10px 0; padding: 11px 13px; background: #fff; color: #111; border: 3px outset #eee; box-shadow: 3px 3px 0 #180020; }
 .guestbook-entry h3 { margin: 0 0 6px; color: #9d006f; font: bold 15px "Courier New",monospace; }.guestbook-entry p { margin: 0 0 7px; color: #111; line-height: 1.4; white-space: pre-wrap; }.guestbook-entry time { color: #555; font: 11px "Courier New",monospace; }
 .coming-soon { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 10px; background: repeating-linear-gradient(135deg,#ffde00 0 13px,#000 13px 26px); border: 3px ridge #fff; color: #000; text-align: center; font: 13px "Courier New",monospace; }
-.coming-soon div { background: #ffffc4; padding: 6px 13px; border: 2px solid #000; } .coming-soon strong { color: #d00000; }
+.coming-soon strong { padding: 8px 16px; background: #ffffc4; border: 2px solid #000; color: #8b0000; }
 footer { padding: 23px 0 5px; text-align: center; color: #fff; font: 13px "Courier New",monospace; } footer p { margin: 7px; }
 .counter { display: inline-flex; padding: 4px; gap: 2px; color: #ff2929; background: #050505; border: 3px inset #999; font: bold 20px "Courier New",monospace; letter-spacing: 2px; text-shadow: 0 0 4px red; }
 .updated { color: #00ff66; } .tiny { color: #aaa; font-size: 10px; line-height: 1.6; }
