@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, limit, query, serverTimestamp, where } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app-check.js";
+import { getToken, initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app-check.js";
 import { appCheckSiteKey, firebaseConfig } from "./firebase-config.js";
 
 const form = document.querySelector("#guestbook-form");
@@ -58,6 +58,7 @@ function displayEntries(entries) {
 }
 
 let db;
+let appCheckReady = Promise.resolve();
 if (!configured()) {
   setStatus("Guestbook setup is almost complete — please check back soon.", "warning");
   messages.innerHTML = '<p class="loading-message">The guestbook is not connected yet.</p>';
@@ -65,7 +66,10 @@ if (!configured()) {
   reloadButton.disabled = true;
 } else {
   const app = initializeApp(firebaseConfig);
-  if (appCheckSiteKey) initializeAppCheck(app, { provider: new ReCaptchaV3Provider(appCheckSiteKey), isTokenAutoRefreshEnabled: true });
+  if (appCheckSiteKey) {
+    const appCheck = initializeAppCheck(app, { provider: new ReCaptchaV3Provider(appCheckSiteKey), isTokenAutoRefreshEnabled: true });
+    appCheckReady = getToken(appCheck, false);
+  }
   db = getFirestore(app);
   loadMessages();
 }
@@ -73,6 +77,7 @@ if (!configured()) {
 async function loadMessages() {
   messages.innerHTML = '<p class="loading-message">Loading guestbook messages...</p>';
   try {
+    await appCheckReady;
     const approved = query(collection(db, collectionName), where("status", "==", "approved"), limit(50));
     displayEntries((await getDocs(approved)).docs);
   } catch {
@@ -94,6 +99,7 @@ form.addEventListener("submit", async (event) => {
   submitButton.disabled = true;
   setStatus("Sending your message...", "");
   try {
+    await appCheckReady;
     await addDoc(collection(db, collectionName), { name, message, status: "approved", createdAt: serverTimestamp() });
     localStorage.setItem("weddingGuestbookLastSubmission", String(Date.now()));
     form.reset();
