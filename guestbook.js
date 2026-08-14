@@ -94,10 +94,10 @@ form.addEventListener("submit", async (event) => {
   submitButton.disabled = true;
   setStatus("Sending your message...", "");
   try {
-    await addDoc(collection(db, collectionName), { name, message, status: "pending", createdAt: serverTimestamp() });
+    await addDoc(collection(db, collectionName), { name, message, status: "approved", createdAt: serverTimestamp() });
     localStorage.setItem("weddingGuestbookLastSubmission", String(Date.now()));
     form.reset();
-    setStatus("Thank you! Your message will appear after approval. ♥", "success");
+    setStatus("Thank you! Your message is now in the guestbook. ♥", "success");
   } catch {
     setStatus("We couldn't send that message. Please try again later.", "error");
   } finally {

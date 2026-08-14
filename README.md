@@ -16,7 +16,7 @@ The website is published with GitHub Pages at:
 - `public/favicon.svg` — the browser icon
 - `guestbook.js` — the Firebase-backed guestbook behavior
 - `firebase-config.js` — public Firebase web configuration (fill this in before launch)
-- `firestore.rules` — Firestore rules for public, moderation-only guestbook access
+- `firestore.rules` — Firestore rules for public guestbook access
 
 ## Edit locally
 
@@ -32,6 +32,4 @@ See [TODO.md](TODO.md) for the planned Firebase-backed guestbook.
 2. Register a Web app, add `llamashoes.github.io` to Authorized domains if Firebase requests it, and paste its **public** configuration into `firebase-config.js`. Never add a service-account key.
 3. In Firestore Database → Rules, publish the contents of `firestore.rules`.
 4. Enable Firebase App Check for the Web app (reCAPTCHA v3), paste its site key into `appCheckSiteKey` in `firebase-config.js`, then enforce App Check for Cloud Firestore.
-5. To moderate, open Firestore Database → `weddingGuestbook`, and change a submitted document’s `status` from `pending` to `approved`.
-
-The site reads only documents where `status` is `approved`; pending notes are never shown publicly.
+5. New guestbook notes publish immediately. To remove an inappropriate message, delete its document from Firestore Database → `weddingGuestbook`.
